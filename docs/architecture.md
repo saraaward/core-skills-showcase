@@ -17,14 +17,14 @@ flowchart TD
 
 ## Change the layer that owns the problem
 
-| Failure | Appropriate home for the fix |
+| Issue | Appropriate home for the fix |
 | --- | --- |
 | A general decision rule is unclear | Skill |
 | A repeatable transformation is incorrect | Script |
 | A platform's API behavior changes | Adapter |
 | One client has a different approval policy | Client configuration |
 | Work reaches the wrong reviewer | Workflow |
-| A known failure returns unnoticed | Eval |
+| A known issue returns unnoticed | Eval |
 
 ## Discovery and versions
 
