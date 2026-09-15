@@ -38,4 +38,6 @@ The example returns `blocked`, `needs_human_review`, or `ready`. It does not aut
 
 ## Status
 
-The architecture and authoring foundation exist in the private library. The public example has its own executable regression tests. These are distinct pieces of evidence; the example does not establish production readiness of the whole library.
+The architecture, authoring standards, and portable personal-context retrieval instructions exist in the private library. Context retrieval depends on the authorized history sources available in each deployment; the instructions do not provide cross-application memory access.
+
+Adapter, workflow, script, and eval directories define the intended structure. A complete production adapter collection and executable library-wide regression harness remain future work. The public example has its own executable regression tests; those results do not establish production readiness of the whole library.
