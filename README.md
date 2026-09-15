@@ -1,18 +1,19 @@
-# Core Skills Library — Architecture Showcase
-
-**Agent infrastructure · Reusable workflows · Evaluation and handoff**
+# Core Skills Library
 
 An architecture for reusable agent instructions and tools that keeps client configuration separate from general operating logic.
 
-**My role:** system owner and principal designer; architecture, authoring standards, ownership boundaries, and versioning approach.
+**Agent architecture · AI enablement · Evaluation and handoff**<br>
+**Status:** private v0.1.0 architecture foundation, with a separate runnable public example.
 
-[Architecture](docs/architecture.md) · [Runnable approval-gate example](examples/approval_gate.py) · [Regression tests](tests/test_approval_gate.py) · [Sara Ward](https://saraward.ai)
+[Architecture](docs/architecture.md) · [Approval-gate example](examples/approval_gate.py) · [Regression tests](tests/test_approval_gate.py) · [CI checks](https://github.com/saraaward/core-skills-showcase/actions) · [Sara Ward](https://saraward.ai)
 
-## The problem
+## The Problem
 
-Agent workflows become difficult to maintain when general instructions, platform mechanics, client rules, and one-off fixes accumulate in the same prompt. A change for one deployment can then affect unrelated work, and it becomes unclear which version is running.
+Agent workflows become difficult to maintain when general instructions, platform mechanics, client rules, and one-off fixes accumulate in the same prompt. A change for one deployment can affect unrelated work, and it becomes unclear which version is running.
 
-The Core Skills Library gives each responsibility a home and defines how deployments consume reusable components.
+## What I Built
+
+The private foundation defines the repository architecture, an authoring-standard skill, templates, versioning guidance, and shared discovery paths for Claude Code and Codex. One canonical skills directory supports both tools.
 
 | Layer | Responsibility |
 | --- | --- |
@@ -23,33 +24,65 @@ The Core Skills Library gives each responsibility a home and defines how deploym
 | Client configuration | Isolated terminology, policies, credentials, and operating context |
 | Evals | Expected decisions, failure cases, and regression protection |
 
-## What exists
+Adapter, workflow, script, and eval directories establish the intended structure. A complete production adapter collection and executable library-wide regression harness remain future work for this foundation.
 
-The private library's **v0.1.0 foundation** contains the repository architecture, an authoring-standard skill, templates, versioning guidance, and shared discovery paths for Claude Code and Codex. One canonical skills directory supports both tools.
+## Workflow
 
-Adapter, workflow, script, and eval directories establish the intended structure. A complete production adapter collection and executable library-wide regression harness are future work.
+The architecture defines: deployment input and isolated configuration → workflow coordination → skills, scripts, and adapters → checks and human review → documented handoff.
 
-## A small example you can run
+The runnable public example demonstrates a narrower boundary: artifact revision and check results → deterministic validation → evaluation status → human approval of the same revision → readiness decision.
 
-This repository adds a **standalone illustrative reference implementation** of one boundary: an artifact becomes ready for handoff only when required checks pass and a human approves the same revision. It is a public teaching example, not an export of the private library or a claim that its regression harness is complete.
+## My Role
+
+System owner and principal designer of the architecture, authoring standards, ownership boundaries, and versioning approach. The public example illustrates one of those boundaries; it is not an export of the private library.
+
+## Technology
+
+**Markdown skill definitions · Git and versioned releases · Claude Code / Codex discovery paths**<br>
+**Public example:** Python 3.9+, standard library `dataclasses` and `unittest`; GitHub Actions.
+
+## AI vs Deterministic Logic
+
+Skills define judgment and decision methods for agents. Scripts own mechanical checks; adapters own platform behavior; client configuration supplies deployment-specific rules. The Python example calls no model: it evaluates required checks, revision identity, and approval state using conventional code.
+
+## QA & Human Oversight
+
+The public example requires actual boolean passes, rejects stale evaluation and approval, and keeps ambiguous evaluation in human review. It returns a decision and reason without delivering an artifact.
 
 ```bash
 python3 examples/approval_gate.py
 python3 -m unittest discover -s tests -v
 ```
 
-Python 3.9+; standard library only. The example uses synthetic inputs, makes no network calls, and performs no delivery action.
+**Verification:** all 10 regression tests passed locally on September 15, 2026; the repository also runs the example and tests in GitHub Actions. Inputs are synthetic and the example makes no network calls.
 
-It demonstrates:
+The example does not authenticate reviewers, persist records, validate content hashes, or perform delivery. Its revision and approval inputs must come from trusted application state in a real implementation. See [architecture and limitations](docs/architecture.md).
 
-- Exact boolean validation for required checks.
-- Explicit handling of failed or ambiguous evaluation.
-- Rejection of stale evaluation and stale human approval.
-- A visible decision and reason for the caller.
-- Regression cases that exercise failure paths.
+## Architecture
 
-## Versioning and operational handoff
+```mermaid
+flowchart TD
+    D[Deployment and pinned core version] --> W[Workflow]
+    C[Isolated client configuration] --> W
+    W --> K[Skills]
+    W --> S[Deterministic scripts]
+    W --> A[Platform adapters]
+    W --> H[Human review]
+    E[Evals and regression cases] -. verify .-> K
+    E -. verify .-> S
+    E -. verify .-> A
+```
 
-Skills have independent versions and creation/modification metadata. Deployments should consume a pinned revision and supply their own configuration. A reviewed failure should become an eval case, lead to a change in the responsible component, and be checked before release.
+This diagram describes the architecture; it does not imply every layer has a production implementation.
 
-The showcase explains the architecture and provides a neutral example. The canonical library, proprietary operating methods, and client deployments remain private.
+## Outcome
+
+The foundation gives reusable knowledge, execution mechanics, and client context explicit homes. The public reference example makes one approval boundary executable and reviewable. Its passing tests do not establish production readiness of the entire library.
+
+## What I Learned
+
+A correction belongs in the layer that owns the failure. Reviewed failures should become eval cases, followed by a targeted change, regression check, and versioned release. Deployments need a pinned revision and their own configuration to make that process traceable.
+
+## Confidentiality
+
+This public case study describes the system architecture and workflow while omitting proprietary source code, credentials, customer data, and internal infrastructure. The runnable example is standalone and synthetic.
