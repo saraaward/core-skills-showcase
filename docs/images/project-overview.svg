@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+<title id="title">CORE SKILLS LIBRARY: A review belongs to one artifact revision</title>
+<desc id="desc">Current revision → Required checks → Matching approval → Readiness decision. Example logic illustration · synthetic Python example; no model call or artifact delivery</desc>
+<rect width="1200" height="420" rx="12" fill="#f7f7f4"/>
+<rect x="42" y="42" width="42" height="5" fill="#ff3b2f"/>
+<text x="42" y="105" font-family="Arial,sans-serif" font-size="34" font-weight="700" letter-spacing="3" fill="#151515">CORE SKILLS LIBRARY</text>
+<text x="42" y="145" font-family="Arial,sans-serif" font-size="22" fill="#5f778b">A review belongs to one artifact revision</text>
+<rect x="42" y="195" width="258" height="110" rx="8" fill="white" stroke="#d9dfe2"/>
+<text x="62" y="226" font-family="Arial,sans-serif" font-size="12" letter-spacing="2" fill="#ff3b2f">01</text>
+<text x="62" y="267" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#353535">Current revision</text>
+<path d="M306 249h13m-5-5 5 5-5 5" fill="none" stroke="#5f778b" stroke-width="2"/>
+<rect x="326" y="195" width="258" height="110" rx="8" fill="white" stroke="#d9dfe2"/>
+<text x="346" y="226" font-family="Arial,sans-serif" font-size="12" letter-spacing="2" fill="#ff3b2f">02</text>
+<text x="346" y="267" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#353535">Required checks</text>
+<path d="M590 249h13m-5-5 5 5-5 5" fill="none" stroke="#5f778b" stroke-width="2"/>
+<rect x="610" y="195" width="258" height="110" rx="8" fill="white" stroke="#d9dfe2"/>
+<text x="630" y="226" font-family="Arial,sans-serif" font-size="12" letter-spacing="2" fill="#ff3b2f">03</text>
+<text x="630" y="267" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#353535">Matching approval</text>
+<path d="M874 249h13m-5-5 5 5-5 5" fill="none" stroke="#5f778b" stroke-width="2"/>
+<rect x="894" y="195" width="258" height="110" rx="8" fill="white" stroke="#d9dfe2"/>
+<text x="914" y="226" font-family="Arial,sans-serif" font-size="12" letter-spacing="2" fill="#ff3b2f">04</text>
+<text x="914" y="267" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#353535">Readiness decision</text>
+<path d="M42 337h1116" stroke="#ff3b2f"/>
+<text x="42" y="371" font-family="Arial,sans-serif" font-size="14" fill="#5f778b">Example logic illustration · synthetic Python example; no model call or artifact delivery</text>
+<text x="1158" y="400" text-anchor="end" font-family="Arial,sans-serif" font-size="12" letter-spacing="2" fill="#5f778b">SARA WARD · SARAWARD.AI</text>
+</svg>
